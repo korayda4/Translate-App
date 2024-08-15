@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Input } from 'antd';
 const { TextArea } = Input;
 
-const InputText = ({ text, disabled, translate, translatedText }) => {
+const InputText = ({ text, disabled, translate, translatedText , currentText}) => {
   const [value, setValue] = useState('');
   const [displayedText, setDisplayedText] = useState('');
 
   useEffect(() => {
-    if (translatedText) {
-      setDisplayedText('');
-      setValue(''); // Değişiklikleri sil
+    setDisplayedText('');
+    setValue(''); // Değişiklikleri sil
+    if (translatedText&&currentText.length > 1) {
       let index = 0;
       const interval = setInterval(() => {
         setDisplayedText(prev => prev + translatedText[index]);
@@ -32,7 +32,7 @@ const InputText = ({ text, disabled, translate, translatedText }) => {
 
   return (
     <TextArea
-      value={translatedText ? displayedText : value}
+      value={currentText&&translatedText ? displayedText : value}
       onChange={handleChange}
       placeholder={text}
       autoSize={{
