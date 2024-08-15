@@ -1,5 +1,6 @@
 import React from 'react';
 import { Select } from 'antd';
+import LanguagesOptions from '../veriable/options'; // LanguagesOptions'ı import et
 
 const Selector = ({ onChange }) => (
   <Select
@@ -9,48 +10,7 @@ const Selector = ({ onChange }) => (
     filterOption={(input, option) =>
       (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
     }
-    options={[
-      {
-        value: 'tr',
-        label: 'Türkçe',
-      },
-      {
-        value: 'en',
-        label: 'English',
-      },
-      {
-        value: 'deu',
-        label: 'Deutsch',
-      },
-      {
-        value: 'fr',
-        label: 'Français',
-      },
-      {
-        value: 'es',
-        label: 'Español',
-      },
-      {
-        value: 'ar',
-        label: 'Arabic',
-      },
-      {
-        value: 'ru',
-        label: 'Russian',
-      },
-      {
-        value: 'zh',
-        label: 'Chinese',
-      },
-      {
-        value: 'el',
-        label: 'Greek',
-      },
-      {
-        value: 'ja',
-        label: 'Japanese',
-      },
-    ]}
+    options={LanguagesOptions} // Eski dil seçeneklerini kaldır ve LanguagesOptions'ı kullan
   />
 );
 
