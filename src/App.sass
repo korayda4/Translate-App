@@ -90,3 +90,11 @@ body
 
 .ant-select-selection-placeholder
   color: $text-color !important
+
+
+@media screen and (max-width: 871px) 
+  .container 
+    @include transformHeight(90%, 250px, 95%)
+    @include transformWidth(85%, 300px , 95%)
+    @include display(column, 14px)
+ 
