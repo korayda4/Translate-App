@@ -3,10 +3,11 @@
 ## How to use?
 - enter some text and it will be translated!
 
-## Thanks
+## Used Technologies
 - ReactJS
 - Lucide İcon
 - Ant Design
+- Sass Css
 
 ## Contact
 Gmail: koraydemirmc@gmail.com
