@@ -1,0 +1,92 @@
+// Variables
+$primary-color: rgba(8, 8, 8, 1)
+$secondary-color: rgba(31, 31, 31, 0.986)
+$box-shadow-color: rgba(0, 0, 0, 0.829)
+$text-color: white
+
+// Mixins
+@mixin background-color($opacity)
+  background-color: rgba(8, 8, 8, $opacity) !important
+
+@mixin display($rotation, $gap)
+  display: flex
+  flex-direction: $rotation
+  gap: $gap
+
+@mixin transformWidth($width, $minWidth, $maxWidth)
+  width: $width !important
+  min-width: $minWidth !important
+  max-width: $maxWidth !important
+
+@mixin transformHeight($height, $minHeight, $maxHeight)
+  height: $height !important
+  min-height: $minHeight !important
+  max-height: $maxHeight !important
+
+// Global Styles
+body
+  background-color: $secondary-color
+
+// Container Styles
+.container
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  padding: 12px
+  border-radius: 6px
+  box-shadow: 0 0 10px 0 $box-shadow-color
+  @include transformWidth(50%, 110px, none)
+  @include transformHeight(55%, 120px, none)
+  @include display(row, 10px)
+  @include background-color(0.2)
+
+  .fromLanguage,
+  .toLanguage
+    flex: 1
+    height: 100%
+    position: relative
+    @include display(column, 10px)
+
+// Input Styles
+.ant-input
+  border: none
+  color: $text-color
+  @include transformWidth(100%, 100%, none)
+  @include transformHeight(100%, none, 100%)
+  @include background-color(0.3)
+
+  &::placeholder
+    color: $text-color
+    font-size: 16px
+    font-weight: 500
+
+  &:hover
+    @include background-color(0.274)
+
+  &:focus
+    @include background-color(0.541)
+    border: none
+    box-shadow: none
+    outline: none
+
+// Select Styles
+.ant-select,
+.ant-select-selector
+  @include background-color(0.28)
+  border: none !important
+  border-radius: 8px !important
+  color: $text-color !important
+
+  input
+    color: $text-color !important
+    font-size: 16px !important
+    font-weight: 500 !important
+
+.ant-select-item,
+.ant-select-dropdown
+  background-color: rgb(37, 37, 37) !important
+  color: $text-color !important
+
+.ant-select-selection-placeholder
+  color: $text-color !important
