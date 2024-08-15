@@ -36,7 +36,7 @@ const debouncedTranslate = debounce(async (text, fromLanguage, toLanguage, setTr
       data,
       {
         headers: {
-          'x-rapidapi-key': '*************************************',
+          'x-rapidapi-key': 'aab97a10efmsh009a93e544d35cap14d640jsn2f33093793fd',
           'x-rapidapi-host': 'deep-translate1.p.rapidapi.com',
           'Content-Type': 'application/json',
         },
