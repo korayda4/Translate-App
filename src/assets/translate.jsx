@@ -10,7 +10,7 @@ const debounce = (func, wait) => {
 };
 
 // Create a debounced version of the translate function
-const debouncedTranslate = debounce(async (text, fromLanguage, toLanguage, error) => {
+const debouncedTranslate = debounce(async (text, fromLanguage, toLanguage, setTranslatedText, error) => {
   if (!text) {
     error("Text is required");
     return;
@@ -43,19 +43,15 @@ const debouncedTranslate = debounce(async (text, fromLanguage, toLanguage, error
       }
     );
 
-    return response.data.data.translations.translatedText;
-    
+    const translatedText = response.data.data.translations.translatedText;
+    setTranslatedText(translatedText); // Update state with translated text
   } catch (error) {
     console.error("Translation Error:", error);
-    throw error;
+    error("Translation failed");
   }
 }, 1000); // Debounce delay of 1 second
 
-// Exported function that triggers the debounced translation and returns a promise
-export const translateText = (text, fromLanguage, toLanguage, error) => {
-  return new Promise((resolve, reject) => {
-    debouncedTranslate(text, fromLanguage, toLanguage, error)
-      .then(translatedText => resolve(translatedText))
-      .catch(err => reject(err));
-  });
+// Exported function that triggers the debounced translation
+export const translateText = (text, fromLanguage, toLanguage, setTranslatedText, error) => {
+  debouncedTranslate(text, fromLanguage, toLanguage, setTranslatedText, error);
 };
