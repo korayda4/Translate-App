@@ -54,6 +54,7 @@ const App = () => {
           text={'Translation'}
           disabled={true}
           translatedText={translatedText}
+          currentText={text}
         />
       </div>
     </div>
