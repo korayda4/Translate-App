@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.sass';
 import Selector from './assets/parts/select';
 import InputText from './assets/parts/InputText';
 import { translateText } from './assets/translate';
 import { message } from 'antd';
 
-function App() {
+const App = () => {
   const [fromLanguage, setFromLanguage] = useState("");
   const [toLanguage, setToLanguage] = useState("");
   const [translatedText, setTranslatedText] = useState('');
+  const [text , setText] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
   const error = (text) => {
@@ -20,26 +21,17 @@ function App() {
 
   const fromLanguageChange = (value) => {
     setFromLanguage(value);
-    console.log("Seçilen dilin değeri:", value);
+    text && translateText(text, fromLanguage, value, setTranslatedText, error);
   };
 
   const toLanguageChange = (value) => {
     setToLanguage(value);
-    console.log("Seçilen dilin değeri:", value);
+    text && translateText(text, fromLanguage, value, setTranslatedText, error);
   };
 
-  const handleTranslateText = async (value) => {
-    try {
-      const result = await translateText(value, fromLanguage, toLanguage,error);
-      console.log("GELDİ");
-      console.log(result);
-      
-      
-      // setTranslatedText(result);
-      
-    } catch (error) {
-      setTranslatedText('Translation failed');
-    }
+  const handleTranslateText = (value) => {
+    setText(value)
+    translateText(value, fromLanguage, toLanguage, setTranslatedText, error);
   };
 
   return (
@@ -66,6 +58,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
