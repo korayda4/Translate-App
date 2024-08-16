@@ -57,7 +57,7 @@ const languagesOptions = [
     { value: 'jv', label: 'Cava' },
     { value: 'ka', label: 'Gürcüce' },
     { value: 'km', label: 'Khmerce' },
-    { value: 'ku', label: 'Kürtçe' },
+    { value: 'ku', label: '     ' },
     { value: 'la', label: 'Latince' },
     { value: 'lb', label: 'Lüksemburgca' },
     { value: 'mg', label: 'Malagazca' },
