@@ -20,9 +20,10 @@ const debouncedTranslate = debounce(async (text, fromLanguage, toLanguage, setTr
   } else if (!toLanguage) {
     error("To language is required");
     return;
+  } else if (fromLanguage === "ku"||toLanguage === "ku") {
+    setTranslatedText("                  ")
+    return;
   }
-
-  console.log(fromLanguage);
 
   const data = {
     q: text,
@@ -49,7 +50,7 @@ const debouncedTranslate = debounce(async (text, fromLanguage, toLanguage, setTr
     console.error("Translation Error:", error);
     error("Translation failed");
   }
-}, 1000); // Debounce delay of 1 second
+}, 500); // Debounce delay of 1 second
 
 // Exported function that triggers the debounced translation
 export const translateText = (text, fromLanguage, toLanguage, setTranslatedText, error) => {
